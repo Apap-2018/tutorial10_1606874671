@@ -2,7 +2,7 @@ import React from 'react';
 import { DaftarPasienRow } from '../components/DaftarPasienRow';
 import { Loading } from '../components/Loading';
 import { TableContainer } from '../containers/TableContainer';
-import { Appointment } from '../utils/Appointment';
+import { Appointment } from '../utils/Appointment.js';
 
 export class DaftarPasien extends React.Component {
 
@@ -12,11 +12,6 @@ export class DaftarPasien extends React.Component {
 			loading: true,
 			listPasien: []
 		}
-
-		/** 
-		 * TODO: Akses method getAllPasien() pada Appointment dan lakukan update state. 
-		 * TODO: Lakukan pemanggilan pada constructor() atau pada lifecycle componentDidMount()
-		 */
 		Appointment.getAllPasien().then(response => {
 			this.setState({
 				loading: false,
@@ -26,16 +21,16 @@ export class DaftarPasien extends React.Component {
 	}
 
 	render() {
-        if (this.state.loading) {
-            return (
-                <Loading msg="Fetching Data..."/>
-            )
-        } else {
-            return (
-                <TableContainer title="Daftar Pasien" header={['Nama Pasien', 'Status Pasien', 'Ubah Data', 'Tambah Hasil Lab']}>
-                    <DaftarPasienRow listPasien={this.state.listPasien}/>
-                </TableContainer>
-            )
-        }
+		if (this.state.loading) {
+			return (
+				<Loading msg="Fetching Data..." />
+			)
+		} else {
+			return (
+				<TableContainer title="Daftar Pasien" header={['Nama Pasien', 'Status Pasien', 'Aksi']}>
+					<DaftarPasienRow listPasien={this.state.listPasien} />
+				</TableContainer>
+			)
+		}
 	}
 }

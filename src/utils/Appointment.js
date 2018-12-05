@@ -68,7 +68,7 @@ export const Appointment = {
 		})
 	},
 
-	addLabResultPasien(requestBody) {
+	addLabResult(requestBody) {
 		return fetch(`${cors}${baseUrl}/1/addLabResult`, {
 			method: 'POST',
 			headers: {
@@ -76,11 +76,11 @@ export const Appointment = {
 			},
 			body: JSON.stringify(requestBody)
 		})
-		.then(response => {
-			return response.json()
-		})
-		.then(jsonResponse => {
-			return jsonResponse
-		})
+			.then(response => {
+				return response.json()
+			})
+			.then(jsonResponse => {
+				return jsonResponse
+			})
 	},
 }
